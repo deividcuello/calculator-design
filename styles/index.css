@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap');
+
+/*VARIABLES*/
+:root{
+    /*COLORS*/
+    --bg-body: rgb(0, 19, 80);
+    --bg-calc: rgb(0, 17, 73);
+    --white: rgb(240, 240, 240);
+    --bg-calc-hover: rgb(0, 8, 35);
+    --green: rgb(0, 255, 0);
+    
+    /*FONTS*/
+    --open-sans: 'Open Sans', sans-serif;
+
+}
+
+/*GENERAL STYLES*/
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+}
+
+html{
+    font-family: var(--open-sans);
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-body);
+    padding: 1rem 5rem;
+}
+
+/*CALCULATOR*/
+#calculator{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(3rem, 5rem));
+    grid-template-rows: repeat(6, 80px);
+    text-align: center;
+    gap: 0.5rem;
+    background-color: var(--bg-calc);
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 10px 10px 14px -6px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 14px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 14px -6px rgba(0,0,0,0.75);
+}
+
+#calculator div:not(:first-child){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: bold;
+    transition: background-color .2s ease;
+    cursor: pointer;
+}
+
+#calculator div:not(:first-child):hover span{
+    padding: 1.5rem;
+    background-color: var(--bg-calc-hover);
+    border-radius: 50%;
+}
+
+#calculator div.equal{
+    grid-row: 5 / 7;
+    grid-column: 4 / 5;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+#calculator div.equal:hover span{
+    display: inline-block;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#calculator .display{
+    grid-column: 1/5;
+    border-radius: 1.5rem;box-shadow: -1px 1px 44px -22px rgba(0,0,0,0.75) inset;
+    -webkit-box-shadow: -1px 1px 44px -22px rgba(0,0,0,0.75) inset;
+    -moz-box-shadow: -1px 1px 44px -22px rgba(0,0,0,0.75) inset;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 0.4rem 1.2rem;
+}
+
+#calculator .display > .result{
+    color: var(--green);
+    font-size: 1.4rem;
+    letter-spacing: 0.2rem;
+    font-weight: 600;
+    width: 100%;
+    overflow: scroll;
+    text-align: end;
+}
+
+#calculator .display > .result::-webkit-scrollbar{
+    display: none;
+}
+
+#calculator .display > .operation{
+    color: var(--white);
+    letter-spacing: 0.2rem;
+    width: 100%;
+    overflow: scroll;
+    text-align: end;
+}
+
+#calculator .display > .operation::-webkit-scrollbar{
+    display: none;
+}
+
+@media only screen and (max-width: 480px) {
+    #calculator div:not(:first-child):hover span{
+        padding: 1rem;
+    }
+}
